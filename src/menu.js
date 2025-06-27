@@ -41,6 +41,7 @@ exports.menuMessage = () => {
 ▢ • ${PREFIX}exit (1/0)
 ▢ • ${PREFIX}hidetag
 ▢ • ${PREFIX}mute
+▢ • ${PREFIX}only-admin (1/0)
 ▢ • ${PREFIX}open
 ▢ • ${PREFIX}promote
 ▢ • ${PREFIX}reveal

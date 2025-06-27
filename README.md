@@ -8,7 +8,7 @@
 
 <div align="center">
     <a href="https://github.com/guiireal/takeshi-bot">
-        <img alt="Version" src="https://img.shields.io/badge/Version-5.2.1-blue">
+        <img alt="Version" src="https://img.shields.io/badge/Version-5.3.0-blue">
     </a>
 </div>
 
@@ -420,7 +420,7 @@ exports.SPIDER_API_TOKEN = "your_token_here";
 |---------|---------|-----------|-----------------|
 | `/samples-of-messages` | Example center | Center with list of all available examples | Interactive menu, direct access to all examples |
 
-## Auto-response
+## Auto response
 
 Takeshi Bot has a built-in auto-responder, edit the file at `./database/auto-responder.json`:
 
@@ -440,6 +440,14 @@ Takeshi Bot has a built-in auto-responder, edit the file at `./database/auto-res
     }
 ]
 ```
+
+## Where is the bot menu?
+
+The bot menu is located in the `src` folder in the file called `menu.js`
+
+## Where do I modify the welcome message and when someone leaves the group?
+
+The messages are located in the `src` folder in the file called `messages.js`
 
 ## Technical implementation of examples
 

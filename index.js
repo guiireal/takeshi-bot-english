@@ -42,7 +42,7 @@
  * ---------------- 🤖 WHERE DO I MODIFY THE MENU? 🤖 ----------------
  *
  * Open the "src" folder
- * Go to the "messages.js" file and edit the menu!
+ * Go to the "menu.js" file and edit the menu!
  * Just remember, do everything inside the backticks (`), since it's a template string.
  *
  * Don't understand?

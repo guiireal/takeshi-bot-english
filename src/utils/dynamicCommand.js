@@ -22,6 +22,7 @@ const {
   getAutoResponderResponse,
   isActiveAutoResponderGroup,
   isActiveAntiLinkGroup,
+  isActiveOnlyAdmins,
 } = require("./database");
 const { errorLog } = require("../utils/logger");
 const { ONLY_GROUP_ID } = require("../config");
@@ -41,8 +42,12 @@ exports.dynamicCommand = async (paramsHandler, startProcess) => {
     webMessage,
   } = paramsHandler;
 
-  if (isActiveAntiLinkGroup(remoteJid) && isLink(fullMessage)) {
-    if (!userJid) return;
+  const activeGroup = isActiveGroup(remoteJid);
+
+  if (activeGroup && isActiveAntiLinkGroup(remoteJid) && isLink(fullMessage)) {
+    if (!userJid) {
+      return;
+    }
 
     if (!(await isAdmin({ remoteJid, userJid, socket }))) {
       await socket.groupParticipantsUpdate(remoteJid, [userJid], "remove");
@@ -70,7 +75,10 @@ exports.dynamicCommand = async (paramsHandler, startProcess) => {
     return;
   }
 
-  if (!verifyPrefix(prefix) || !hasTypeOrCommand({ type, command })) {
+  if (
+    activeGroup &&
+    (!verifyPrefix(prefix) || !hasTypeOrCommand({ type, command }))
+  ) {
     if (isActiveAutoResponderGroup(remoteJid)) {
       const response = getAutoResponderResponse(fullMessage);
 
@@ -82,12 +90,21 @@ exports.dynamicCommand = async (paramsHandler, startProcess) => {
     return;
   }
 
-  if (!(await checkPermission({ type, ...paramsHandler }))) {
+  if (activeGroup && !(await checkPermission({ type, ...paramsHandler }))) {
     await sendErrorReply("You don't have permission to execute this command!");
     return;
   }
 
-  if (!isActiveGroup(remoteJid) && command.name !== "on") {
+  if (
+    activeGroup &&
+    isActiveOnlyAdmins(remoteJid) &&
+    !(await isAdmin({ remoteJid, userJid, socket }))
+  ) {
+    await sendWarningReply("Only administrators can execute commands!");
+    return;
+  }
+
+  if (!activeGroup && command.name !== "on") {
     await sendWarningReply(
       "This group is deactivated! Ask the group owner to activate the bot!"
     );
@@ -128,7 +145,7 @@ exports.dynamicCommand = async (paramsHandler, startProcess) => {
     } else {
       errorLog("Error executing command", error);
       await sendErrorReply(
-        `An error occurred while executing the ${command.name} command! The developer has been notified!
+        `An error occurred while executing the command ${command.name}! The developer has been notified!
       
 📄 *Details*: ${error.message}`
       );

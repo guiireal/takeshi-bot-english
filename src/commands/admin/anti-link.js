@@ -1,5 +1,7 @@
+const { isActiveAntiLinkGroup } = require("../../utils/database");
+
 const { PREFIX } = require(`${BASE_DIR}/config`);
-const { InvalidParameterError } = require(`${BASE_DIR}/errors`);
+const { InvalidParameterError, WarningError } = require(`${BASE_DIR}/errors`);
 const {
   activateAntiLinkGroup,
   deactivateAntiLinkGroup,
@@ -7,7 +9,7 @@ const {
 
 module.exports = {
   name: "anti-link",
-  description: "Activates/deactivates the anti-link function in the group.",
+  description: "Enable/disable the anti-link feature in the group.",
   commands: ["anti-link"],
   usage: `${PREFIX}anti-link (1/0)`,
   /**
@@ -17,7 +19,7 @@ module.exports = {
   handle: async ({ args, sendReply, sendSuccessReact, remoteJid }) => {
     if (!args.length) {
       throw new InvalidParameterError(
-        "You need to write 1 or 0 (activate or deactivate)!"
+        "You need to type 1 or 0 (turn on or off)!"
       );
     }
 
@@ -26,7 +28,18 @@ module.exports = {
 
     if (!antiLinkOn && !antiLinkOff) {
       throw new InvalidParameterError(
-        "You need to write 1 or 0 (activate or deactivate)!"
+        "You need to type 1 or 0 (turn on or off)!"
+      );
+    }
+
+    const hasActive = antiLinkOn && isActiveAntiLinkGroup(remoteJid);
+    const hasInactive = antiLinkOff && !isActiveAntiLinkGroup(remoteJid);
+
+    if (hasActive || hasInactive) {
+      throw new WarningError(
+        `The anti-link feature is already ${
+          antiLinkOn ? "enabled" : "disabled"
+        }!`
       );
     }
 
@@ -38,8 +51,8 @@ module.exports = {
 
     await sendSuccessReact();
 
-    const context = antiLinkOn ? "activated" : "deactivated";
+    const context = antiLinkOn ? "enabled" : "disabled";
 
-    await sendReply(`Anti-link function ${context} successfully!`);
+    await sendReply(`Anti-link feature ${context} successfully!`);
   },
 };
