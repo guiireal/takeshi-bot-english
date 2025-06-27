@@ -1,0 +1,45 @@
+/**
+ * Developed by: MRX
+ * Refactored by: Dev Gui
+ *
+ * @author Dev Gui
+ */
+const { PREFIX } = require(`${BASE_DIR}/config`);
+const { InvalidParameterError } = require(`${BASE_DIR}/errors`);
+const Ffmpeg = require(`${BASE_DIR}/services/ffmpeg`);
+
+module.exports = {
+  name: "pixel",
+  description: "Generate an edit that converts the image you send to pixel-art",
+  commands: ["pixel", "pixel-art", "px"],
+  usage: `${PREFIX}pixel (tag the image) or ${PREFIX}pixel (reply to the image)`,
+  handle: async ({
+    isImage,
+    downloadImage,
+    sendSuccessReact,
+    sendWaitReact,
+    sendImageFromFile,
+    webMessage,
+  }) => {
+    if (!isImage) {
+      throw new InvalidParameterError(
+        "You need to tag an image or reply to an image!"
+      );
+    }
+
+    await sendWaitReact();
+    const filePath = await downloadImage(webMessage);
+    const ffmpeg = new Ffmpeg();
+
+    try {
+      const outputPath = await ffmpeg.applyPixelation(filePath);
+      await sendSuccessReact();
+      await sendImageFromFile(outputPath);
+    } catch (error) {
+      console.error(error);
+      throw new Error("Error applying pixel effect");
+    } finally {
+      await ffmpeg.cleanup(filePath);
+    }
+  },
+};

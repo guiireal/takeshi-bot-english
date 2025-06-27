@@ -1,0 +1,14 @@
+[
+    {
+        "match": "Hola",
+        "answer": "¿Hola, cómo estás?"
+    },
+    {
+        "match": "Todo bien",
+        "answer": "Estoy bien, gracias por preguntar"
+    },
+    {
+        "match": "¿Cuál es tu nombre?",
+        "answer": "Mi nombre es Takeshi Bot"
+    }
+]
