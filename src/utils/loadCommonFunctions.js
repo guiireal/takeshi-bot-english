@@ -71,7 +71,7 @@ exports.loadCommonFunctions = ({ socket, webMessage }) => {
   };
 
   const downloadAudio = async (webMessage, fileName) => {
-    return await download(webMessage, fileName, "audio", "mp4");
+    return await download(webMessage, fileName, "audio", "mpeg");
   };
 
   const downloadImage = async (webMessage, fileName) => {
@@ -314,7 +314,7 @@ exports.loadCommonFunctions = ({ socket, webMessage }) => {
       remoteJid,
       {
         audio: fs.readFileSync(filePath),
-        mimetype: "audio/mp4",
+        mimetype: "audio/mpeg",
         ptt: asVoice,
       },
       {
@@ -336,7 +336,7 @@ exports.loadCommonFunctions = ({ socket, webMessage }) => {
       remoteJid,
       {
         audio: buffer,
-        mimetype: "audio/mp4",
+        mimetype: "audio/mpeg",
         ptt: asVoice,
       },
       {
@@ -354,7 +354,7 @@ exports.loadCommonFunctions = ({ socket, webMessage }) => {
       remoteJid,
       {
         audio: { url },
-        mimetype: "audio/mp4",
+        mimetype: "audio/mpeg",
         ptt: asVoice,
       },
       { url, ...quotedObject }
