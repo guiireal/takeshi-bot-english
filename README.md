@@ -296,46 +296,47 @@ exports.SPIDER_API_TOKEN = "your_token_here";
 | Function | Context | Requires Spider X API?
 | ------------ | --- | ---
 | Change bot image | Owner | ❌
-| Turn bot off in group | Owner | ❌
 | Execute infrastructure commands | Owner | ❌
-| Turn bot on in group | Owner | ❌
 | Get group ID | Owner | ❌
-| Open group | Admin | ❌
-| Schedule message | Admin | ❌
+| Turn bot off in group | Owner | ❌
+| Turn bot on in group | Owner | ❌
+| Admins only | Admin | ❌
 | Anti-link | Admin | ❌
 | Ban members | Admin | ❌
+| Change group name | Admin | ❌
+| Clear chat | Admin | ❌
 | Close group | Admin | ❌
 | Enable/disable auto-response | Admin | ❌
-| Enable/disable welcome | Admin | ❌
 | Enable/disable group exit | Admin | ❌
-| Clear chat | Admin | ❌
+| Enable/disable welcome | Admin | ❌
 | Mention everyone | Admin | ❌
-| Change group name | Admin | ❌
 | Mute/unmute | Admin | ❌
+| Open group | Admin | ❌
 | Reveal | Admin | ❌
-| Blur image | Member | ❌
-| Prison canvas | Member | ✅
-| Invert canvas | Member | ✅
-| RIP canvas | Member | ✅
-| Fun/game commands | Member |❌
-| Mirror image | Member | ❌
-| Fake chat | Member | ❌
-| Animated text sticker | Member | ✅
+| Schedule message | Admin | ❌
 | AI image generation | Member | ✅
+| AI sticker | Member | ✅
+| Animated text sticker | Member | ✅
+| Black/white image | Member | ❌
+| Blur image | Member | ❌
+| Contrast image | Member | ❌
+| Fake chat | Member | ❌
+| Fun/game commands | Member |❌
 | Generate link | Member | ❌
 | Google Gemini | Member | ✅
 | Google Search | Member | ✅
-| Contrast image | Member | ❌
-| PixArt AI image | Member | ✅
-| Stable Diffusion Turbo AI image | Member | ✅
-| Pixelated image | Member | ❌
-| Black/white image | Member | ❌
+| Invert canvas | Member | ✅
+| Mirror image | Member | ❌
 | Ping | Member | ❌
+| PixArt AI image | Member | ✅
+| Pixelated image | Member | ❌
 | Play audio | Member | ✅
 | Play video | Member | ✅
+| Prison canvas | Member | ✅
 | Rename sticker | Member | ❌
+| RIP canvas | Member | ✅
+| Stable Diffusion Turbo AI image | Member | ✅
 | Sticker | Member | ❌
-| AI sticker | Member | ✅
 | Sticker to image | Member | ❌
 | TikTok video download | Member | ✅
 | YT MP3 | Member | ✅
