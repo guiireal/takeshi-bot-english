@@ -8,7 +8,7 @@
 
 <div align="center">
     <a href="https://github.com/guiireal/takeshi-bot">
-        <img alt="Version" src="https://img.shields.io/badge/Version-5.3.0-blue">
+        <img alt="Version" src="https://img.shields.io/badge/Version-5.4.0-blue">
     </a>
 </div>
 
@@ -306,6 +306,7 @@ exports.SPIDER_API_TOKEN = "your_token_here";
 | Change group name | Admin | ❌
 | Clear chat | Admin | ❌
 | Close group | Admin | ❌
+| Delete messages | Admin | ❌
 | Enable/disable auto-response | Admin | ❌
 | Enable/disable group exit | Admin | ❌
 | Enable/disable welcome | Admin | ❌
