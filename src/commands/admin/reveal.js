@@ -1,7 +1,7 @@
+const fs = require("node:fs");
+const path = require("node:path");
 const { DEFAULT_PREFIX, TEMP_DIR } = require(`${BASE_DIR}/config`);
 const { InvalidParameterError } = require(`${BASE_DIR}/errors`);
-const path = require("node:path");
-const fs = require("node:fs");
 const ffmpeg = require("fluent-ffmpeg");
 const { getRandomName } = require(`${BASE_DIR}/utils`);
 
@@ -33,10 +33,7 @@ module.exports = {
 
     await sendWaitReact();
 
-    const mediaCaption =
-      webMessage.message?.extendedTextMessage?.contextInfo?.quotedMessage?.[
-        isImage ? "imageMessage" : "videoMessage"
-      ]?.caption || `Here's your revealed ${isImage ? "image" : "video"}!`;
+    const mediaCaption = `Here's your revealed ${isImage ? "image" : "video"}!`;
 
     const outputPath = path.resolve(
       TEMP_DIR,

@@ -1,6 +1,6 @@
 {
   "name": "takeshi-bot",
-  "version": "5.4.0",
+  "version": "5.4.1",
   "description": "A multifunctional WhatsApp bot.",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@cacheable/node-cache": "^1.5.5",
-    "axios": "^1.9.0",
+    "@cacheable/node-cache": "^1.5.8",
+    "axios": "^1.10.0",
     "baileys": "^6.7.18",
     "correios-brasil": "^3.0.6",
     "fluent-ffmpeg": "^2.1.3",
