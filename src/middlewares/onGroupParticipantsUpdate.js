@@ -4,8 +4,8 @@
  *
  * @author Dev Gui
  */
+const fs = require("node:fs");
 const { getProfileImageData } = require("../services/baileys");
-const fs = require("fs");
 const { onlyNumbers, getRandomNumber } = require("../utils");
 const {
   isActiveWelcomeGroup,
