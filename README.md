@@ -37,6 +37,10 @@
   </li>
 </ul>
 
+## ❗ IMPORTANT
+
+This project is not updated as often as the Portuguese or Spanish version, because of the low demand, if you find problems, climb a PR or open a issue!
+
 ## 💻 Technologies involved
 
 - [Axios](https://axios-http.com/ptbr/docs/intro)
